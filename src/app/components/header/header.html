@@ -1,0 +1,10 @@
+<header>
+    <h1>eCommerce</h1>
+    <nav>
+        <ul>
+            @for (menu of menus(); track menu.id) {
+                <li><a routerLink="/{{menu.routerPath}}">{{menu.name}}</a></li>
+            }
+        </ul>
+    </nav>
+</header>

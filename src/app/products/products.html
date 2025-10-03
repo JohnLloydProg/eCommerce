@@ -1,0 +1,17 @@
+<h2>Products</h2>
+
+@for (category of products(); track category.categoryName) {
+    <div class="product-list">
+        <h3>{{category.categoryName}}</h3>
+        <div class="products">
+            @for (product of category.products; track product.id) {
+                <div class="product-card">
+                    <img src="assets/{{product.imageFile}}.jpg" alt="{{product.name}}">
+                    <h4>{{product.name}}</h4>
+                    <p>{{product.description}}</p>
+                    <p>Price: {{product.price}} per {{product.unitOfMeasure}}</p>
+                </div>
+            }
+        </div>
+    </div>
+}

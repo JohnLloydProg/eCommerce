@@ -1,0 +1,8 @@
+<div class="body">
+    <h1>eCommerce</h1>
+    <ul>
+        @for (menu of menus(); track menu.id) {
+            <li><a routerLink="/{{menu.routerPath}}">{{menu.name}}</a></li>
+        }
+    </ul>
+</div>
