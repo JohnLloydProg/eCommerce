@@ -1,0 +1,32 @@
+<h2>Cart</h2>
+
+<div class="wrapper">
+    <div class="cart-list">
+        @for (category of products(); track category.categoryName) {
+            @for (product of category.products; track product.id) {
+                <app-cart-item [id]="product.id" [name]="product.name" [price]="product.price" [imageFile]="product.imageFile" [unitOfMeasure]="product.unitOfMeasure" [quantity]="product.quantity?.toString()" [totalPrice]="product.totalPrice?.toString()" (addToOrder)="addToOrder($event)" (removeFromOrder)="removeFromOrder($event)"/>
+            }
+        }
+    </div>
+    <div class="order-details">
+        <h4>Order Details</h4>
+        <div class="order-list">
+            @for (product_id of orders(); track product_id) {
+                @for (category of products(); track category.categoryName) {
+                    @for (product of category.products; track product.id) {
+                        @if (product.id == product_id) {
+                            <div class="order-item">
+                                <p>{{product.name}} ({{product.quantity}} {{product.unitOfMeasure}})</p>
+                                <p>P{{product.totalPrice}}</p>
+                            </div>
+                        }
+                    }
+                }
+            }
+        </div>
+        <div class="total">
+            <p><span class="bold">Total:</span> P{{total()}}</p>
+            <button (click)="checkout()">Checkout</button>
+        </div>
+    </div>
+</div>

@@ -10,5 +10,15 @@ export const routes: Routes = [
         path: 'product',
         pathMatch: 'full',
         loadComponent: () => {return import('./products/products').then(m => m.Products)}
+    },
+    {
+        path: 'cart',
+        pathMatch: 'full',
+        loadComponent: () => {return import('./cart/cart').then(m => m.Cart)}
+    },
+    {
+        path: 'customer',
+        pathMatch: 'full',
+        loadComponent: () => {return import('./customer/customer').then(m => m.Customer)}
     }
 ];

@@ -1,0 +1,12 @@
+<div class="cart-item">
+    <h3>{{name()}}</h3>
+    <div class="wrapper">
+        <img src="assets/{{imageFile()}}.jpg" alt="{{name()}}">
+        <div class="details">
+            <p><span class="bold">Price:</span> P{{price()}} per {{unitOfMeasure()}}</p>
+            <p><span class="bold">Quantity:</span> {{ quantity() }}</p>
+            <p><span class="bold">Total:</span> P{{totalPrice()}}</p>
+        </div>
+    </div>
+    <div style="text-align: right;"><input type="checkbox" (change)="onCheckboxChange($event)"></div>
+</div>

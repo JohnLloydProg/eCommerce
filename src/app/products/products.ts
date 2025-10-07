@@ -1,9 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Category } from '../interfaces/category';
+import { Product } from '../components/product/product';
 
 @Component({
   selector: 'app-products',
-  imports: [],
+  imports: [Product],
   templateUrl: './products.html',
   styleUrl: './products.less'
 })
