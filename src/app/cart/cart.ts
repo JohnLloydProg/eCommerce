@@ -1,6 +1,7 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Category } from '../interfaces/category';
 import { CartItem } from '../components/cart-item/cart-item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +10,7 @@ import { CartItem } from '../components/cart-item/cart-item';
   styleUrl: './cart.less'
 })
 export class Cart implements OnInit {
+  router = inject(Router);
   products = signal<Category[]>([]);
   orders = signal<number[]>([]);
   total = signal<number>(0);
@@ -62,10 +64,11 @@ export class Cart implements OnInit {
   }
 
   checkout():void {
-    let firstName:string | null= localStorage.getItem('firstName');
-    let middleName:string | null= localStorage.getItem('middleName');
-    let lastName:string | null= localStorage.getItem('lastName');
-    let customerId:string | null = localStorage.getItem('customerId');
-    localStorage.clear();
+    if (this.orders().length === 0) return;
+    for (let order of this.orders()) {
+      localStorage.removeItem(order.toString());
+    }
+    console.log('Thank you for your purchase!');
+    this.router.navigate(['/product']);
   }
 }
